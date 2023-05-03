@@ -55,3 +55,6 @@ packages/react-devtools-timeline/dist
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# configurações do editor
+.eslintrc.json
