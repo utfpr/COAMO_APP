@@ -69,8 +69,8 @@ export default function ContactNew() {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const url = form.id ? `/contatos/${id}/` : `/contatos/`;
-    const method = form.id ? 'put' : 'post';
+    const url = id ? `/contatos/${id}/` : `/contatos/`;
+    const method = id ? 'put' : 'post';
     await api[method](url, form).then((res) => {
       console.log(res);
     })
