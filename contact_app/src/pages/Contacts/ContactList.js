@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../../services/api";
+import React from "react";
 
-export default function List() {
+export default function ContactList() {
   const [contacts, setContact] = useState([]);
   
   const getContacts = async () => {
@@ -17,7 +18,8 @@ export default function List() {
   const handleDelete = async (idContact) => {
     await api
       .delete(`/contatos/${idContact}`)
-      .then((res) => console.log());
+      .then((res) => console.log(res));
+    getContacts();
   }
 
   if (!contacts) {
@@ -31,7 +33,7 @@ export default function List() {
         {contacts.map((contact) => (
           <li key={contact.id}>
             <Link to={`${contact.id}`}>{contact.nome} ({contact.grupo.nome})</Link>
-            <br />
+            &nbsp;-&nbsp;
             <button onClick={() => handleDelete(contact.id)}>
               <b>excluir</b>
             </button>
