@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import api from "../../services/api";
-import React from "react";
 
 export default function ContactNew() {
   const [form, setForm] = useState({
@@ -110,52 +109,67 @@ export default function ContactNew() {
       <h2>{id ? 'Atualizando' : 'Criando'} o contato</h2>
       <form onSubmit={handleSubmit}>
         <label>
-        Nome: <input type="text" id="nome" name="nome" value={form.nome} onChange={handleChange} />
+        Nome: <input type="text" id="nome" name="nome" value={form.nome} 
+          onChange={handleChange} />
         </label>
         <label>
-        Empresa: <input type="text" id="empresa" name="empresa" value={form.empresa} onChange={handleChange} />
+        Empresa: <input type="text" id="empresa" name="empresa" 
+          value={form.empresa} onChange={handleChange} />
         </label>
         <label>
-        Cargo: <input type="text" id="cargo" name="cargo" value={form.cargo} onChange={handleChange} />
+        Cargo: <input type="text" id="cargo" name="cargo" value={form.cargo} 
+          onChange={handleChange} />
         </label>
         <label>
-        Email: <input type="email" id="email" name="email" value={form.email} onChange={handleChange} />
+        Email: <input type="email" id="email" name="email" value={form.email} 
+          onChange={handleChange} />
         </label>
         <label>
-        Data de nascimento: <input type="date" id="aniversario" name="aniversário" value={form.aniversário} onChange={handleChange} />
+        Data de nascimento: <input type="date" id="aniversario" 
+          name="aniversário" value={form.aniversário} onChange={handleChange} />
         </label>
         <label>
-        Logradouro: <input type="text" id="logradouro" name="logradouro" value={form.logradouro} onChange={handleChange} />
+        Logradouro: <input type="text" id="logradouro" name="logradouro" 
+          value={form.logradouro} onChange={handleChange} />
         </label>
         <label>
-        Cidade: <input type="text" id="cidade" name="cidade" value={form.cidade} onChange={handleChange} />
+        Cidade: <input type="text" id="cidade" name="cidade" value={form.cidade} 
+          onChange={handleChange} />
         </label>
         <label>
-        Estado: <input type="text" id="estado" name="estado" value={form.estado} onChange={handleChange} />
+        Estado: <input type="text" id="estado" name="estado" value={form.estado} 
+          onChange={handleChange} />
         </label>
         <label>
-        CEP: <input type="text" id="cep" name="cep" value={form.cep} onChange={handleChange} />
+        CEP: <input type="text" id="cep" name="cep" value={form.cep} 
+          onChange={handleChange} />
         </label>
         <label>
-        Observações: <textarea id="observacoes" name="observações" value={form.observações} onChange={handleChange}></textarea>
+        Observações: <textarea id="observacoes" name="observações" 
+          value={form.observações} onChange={handleChange}></textarea>
         </label>
         <h3>Informações do grupo</h3>
         <label>
-        Grupo: <input type="text" name="nome" value={form.grupo.nome} onChange={handleGroupChange} />
+        Grupo: <input type="text" name="nome" value={form.grupo.nome} 
+          onChange={handleGroupChange} />
         </label>
         <label>
-        Link (WhatsApp): <input type="text" name="link_whats" value={form.grupo.link_whats? form.grupo.link_whats : ""} onChange={handleGroupChange} />
+        Link (WhatsApp): <input type="text" name="link_whats" 
+          value={form.grupo.link_whats? form.grupo.link_whats : ""} 
+          onChange={handleGroupChange} />
         </label>
         <br />
         <h3>Informações de telefones</h3>
         <label>
           {form.telefone_list.map((tel, index) => (
             <div key={index}>
-              Tipo: <input type="text" name="descrição" value={tel.tipo_telefone.descrição}
+              Tipo: <input type="text" name="descrição" 
+                value={tel.tipo_telefone.descrição}
                 onChange={(event) => handleTelDescChange(index, event)}/>
               &nbsp;Número: <input type="text" name="número" value={tel.número}
                 onChange={(event) => handleTelNumberChange(index, event)}/>
-              &nbsp;<button type="button" onClick={() => handleRemTel(index)}>apaga</button>
+              &nbsp;<button type="button" 
+                onClick={() => handleRemTel(index)}>apaga</button>
             </div>
           ))}
           <br />

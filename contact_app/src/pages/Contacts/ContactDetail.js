@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import api from "../../services/api";
-import React from "react";
 
 export default function ContactDetail() {
   const [details, setDetails] = useState([]);

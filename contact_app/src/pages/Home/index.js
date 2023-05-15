@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import ContactBanner from "../assets/contact-banner.jpg"
 import './style.css'
-import React from "react";
 
 export default function Principal() {
     const navigate = useNavigate();

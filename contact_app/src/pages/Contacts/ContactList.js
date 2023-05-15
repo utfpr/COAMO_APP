@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../../services/api";
-import React from "react";
 
 export default function ContactList() {
   const [contacts, setContact] = useState([]);
