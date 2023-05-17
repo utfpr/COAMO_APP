@@ -41,7 +41,11 @@ export default function ContactDetail() {
         <li>CEP: {details.cep}</li>
         <li>Observações: {details.observações}</li>
       </ul>
-      <Link to={'edit'}>Editar contato</Link>
+      <button className="btn btn-primary" type="button"
+        onClick={() => {window.location.href = `/contacts/${details.id}/edit/`}}>
+        Editar contato
+      </button>
+      <br /><br />
     </div>
   )
 }

@@ -26,7 +26,11 @@ export default function GroupDetail() {
         <li>Nome do grupo: {details.nome}</li>
         <li>Grupo no WhatsApp: {details.link_whats}</li>
       </ul>
-      <Link to={'edit'}>Editar grupo</Link>
+      <button className="btn btn-primary" type="button"
+        onClick={() => {window.location.href = `/groups/${details.id}/edit/`}}>
+        Editar grupo
+      </button>
+      <br /><br />
     </div>
   )
 }

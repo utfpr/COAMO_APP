@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import api from "../../services/api";
 
 export default function ContactList() {
   const [contacts, setContact] = useState([]);
+  const navigate = useNavigate();
   
   const getContacts = async () => {
     await api.get("/contatos")
@@ -28,18 +29,24 @@ export default function ContactList() {
   return (
     <div className="App">
       <h2>Lista de contatos</h2>
-      <ul>
+      <ul className="list-group">
         {contacts.map((contact) => (
-          <li key={contact.id}>
-            <Link to={`${contact.id}`}>{contact.nome} ({contact.grupo.nome})</Link>
-            &nbsp;-&nbsp;
-            <button onClick={() => handleDelete(contact.id)}>
-              <b>excluir</b>
-            </button>
+          <li className="list-group-item" key={contact.id}>
+            <div className="d-flex justify-content-between align-items-center">
+              <div>
+                <Link to={`${contact.id}`}>{contact.nome} ({contact.grupo.nome})</Link>
+              </div>
+              <button className="btn btn-danger" onClick={() => handleDelete(contact.id)}>
+                excluir
+              </button>
+            </div>  
           </li>
         ))}
       </ul>
-      <Link to={'new'}>Adicionar novo contato</Link>
+      <br />
+      <button className="btn btn-primary" onClick={() => navigate('/contacts/new')}>
+        Novo contato
+      </button>
     </div>
   )
 }

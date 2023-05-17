@@ -43,16 +43,18 @@ export default function GroupNew() {
     <div className="App">
       <h2>{id ? 'Atualizando' : 'Criando'} o grupo</h2>
       <form onSubmit={handleSubmit}>
-        <label>
-          Nome do grupo:
-          <input type="text" id="nome" name="nome" value={form.nome} onChange={handleChange} />
-        </label>
-        <label>
-          Link do grupo no WhatsApp:
-          <input type="text" id="link_whats" name="link_whats" value={form.link_whats} onChange={handleChange} />
-        </label>
-        <br />
-        <button type="submit">{id ? 'Atualizar' : 'Salvar'}</button>
+        <div className="form-floating mb-2">
+          <input className="form-control" placeholder="" type="text" id="nome" 
+            name="nome" value={form.nome} onChange={handleChange} />
+          <label>Nome</label>
+        </div>
+        <div className="form-floating mb-2">
+          <input className="form-control" placeholder="" type="text" id="link_whats" 
+            name="link_whats" value={form.link_whats} onChange={handleChange} />
+          <label>Link do grupo no WhatsApp</label>
+        </div>
+        <button className="btn btn-primary" type="submit">{id ? 'Atualizar' : 'Salvar'}</button>
+        <br /><br />
       </form>
     </div>
   )

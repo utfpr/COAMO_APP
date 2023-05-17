@@ -1,29 +1,10 @@
-import { useNavigate } from "react-router-dom";
 import ContactBanner from "../assets/contact-banner.jpg"
-import './style.css'
 
 export default function Principal() {
-    const navigate = useNavigate();
-
-    async function viewContacts() {
-        navigate('/contacts');
-    }
-
-    async function viewGroups() {
-        navigate('/groups');
-    }
-
-    return (
-        <div className="principal-container">
-            <img src={ContactBanner} alt="img1" />
-            <br />
-            <form onSubmit={viewContacts}>
-                <button type="submit">lista de contatos</button>
-            </form>
-            <br />
-            <form onSubmit={viewGroups}>
-                <button type="submit">lista de grupos</button>
-            </form>
-        </div>
-    )
+  return (
+    <div className="text-center">
+      <h3>Aplicação de Contatos - COAMO (GTI)</h3>
+      <img className="img-fluid rounded" src={ContactBanner} alt="img1" />
+    </div>
+  )
 }
