@@ -1,0 +1,1 @@
+export const googleMapsApiKey = 'SUA_API_KEY_DO_MAPS_JAVASCRIPT';

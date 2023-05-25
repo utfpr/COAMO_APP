@@ -5,10 +5,24 @@ import api from "../../services/api";
 export default function GroupList() {
   const [groups, setGroups] = useState([]);
   const navigate = useNavigate();
+  const [contacts, setContacts] = useState([]);
 
   const getGroups = async () => {
     await api.get("/grupos")
       .then((res) => setGroups(res.data));
+  }
+
+  const getContacts = async () => {
+    await api.get("/contatos")
+      .then((res) => setContacts(res.data));
+  }
+
+  const handleSendMails = async (idGroup) => {
+    const contactsFromGroup = contacts.filter(
+      (contact) => contact.grupo.id === idGroup
+    )
+    const emailList = contactsFromGroup.map(contact => contact.email);
+    window.location.href = `mailto:?bcc=${emailList}`;
   }
 
   const handleDelete = async (idGroup) => {
@@ -20,9 +34,10 @@ export default function GroupList() {
 
   useEffect(() => {
     getGroups();
+    getContacts();
   }, []);
 
-  if (!groups) {
+  if (!groups || !contacts) {
     return <p>Carregando...</p>
   }
 
@@ -32,14 +47,19 @@ export default function GroupList() {
       <ul className="list-group">
         {groups.map((group) => (
           <li className="list-group-item" key={group.id}>
-            <div className="d-flex justify-content-between align-items-center">
-              <div>
+            <div className="row">
+              <div className="col-sm-6">
                 <Link to={`${group.id}`}>{group.nome}</Link>
               </div>
-              <button className="btn btn-danger" onClick={() => handleDelete(group.id)}>
-                excluir
-              </button>
-            </div>  
+              <div className="col-sm-6 d-flex justify-content-end">
+                <button className="btn btn-success me-4" onClick={() => handleSendMails(group.id)}>
+                  enviar <b>e-mail</b> para o grupo
+                </button>
+                <button className="btn btn-danger" onClick={() => handleDelete(group.id)}>
+                  excluir
+                </button>
+              </div>
+            </div>
           </li>
         ))}
       </ul>
